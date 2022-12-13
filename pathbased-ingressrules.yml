@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: IngressName
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: 
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: flask-hello
+            port:
+              number: 80
+      - path: /alexa
+        pathType: Prefix
+        backend:
+          service:
+            name: flask-greet
+            port:
+              number: 80
